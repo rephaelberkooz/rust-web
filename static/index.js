@@ -45,7 +45,7 @@ const runWasm = async () => {
   console.log(helloWorld.read_wasm_memory_buffer_and_return_index_one()); // Should log "15"
 
   // Instantiate our wasm module
-  const rustWasm = await wasmInit("/static/wasm-graphics/graphics_bg.wasm");
+  const rustWasm = await wasmInit("/static/wasm-graphics/wasm_graphics_bg.wasm");
 
   // Create a Uint8Array to give us access to Wasm Memory
   const wasmByteMemoryArray = new Uint8Array(rustWasm.memory.buffer);

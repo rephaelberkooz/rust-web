@@ -1,14 +1,8 @@
+use actix_files::Files;
 use actix_files::NamedFile;
-use actix_files::{file_extension_to_mime, Files};
-use actix_web::body::MessageBody;
-use actix_web::http::header::HeaderName;
 // For serving files
-use actix_web::{
-    dev::{ServiceRequest, ServiceResponse},
-    middleware, web, App, HttpServer, Result,
-};
+use actix_web::{middleware, web, App, HttpServer, Result};
 use std::path::PathBuf;
-use std::str::FromStr;
 mod say_hi;
 
 async fn serve_index() -> Result<NamedFile> {
@@ -16,12 +10,6 @@ async fn serve_index() -> Result<NamedFile> {
     let path: PathBuf = "./static/index.html".into(); // Adjust this to your file location
     Ok(NamedFile::open(path)?)
 }
-//
-//async fn update_mime(
-//    req: ServiceRequest,
-//    &serv: Service,
-//) -> Future<Output = Result<ServiceResponse<MessageBody>, Error>> {
-//}
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
